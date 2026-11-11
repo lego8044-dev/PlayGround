@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#171a20" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%23f2c75c%22/><text x=%2232%22 y=%2245%22 text-anchor=%22middle%22 font-size=%2242%22>✈</text></svg>" />
+  <title>Plane Tame — Escape the Backrooms</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Plane Tame home"><span class="brand-mark">✈</span><span>PLANE <b>TAME</b></span></a>
+      <div class="top-meta"><span class="pill"><i></i> BACKROOMS SURVIVAL</span><span class="sound-label">A VERY ODD FLIGHT</span></div>
+      <button id="soundBtn" class="icon-btn" aria-label="Toggle sound">♫</button>
+    </header>
+    <section class="game-layout">
+      <div class="arena-wrap">
+        <canvas id="game" aria-label="Plane Tame game arena"></canvas>
+        <div class="hud">
+          <div class="hud-left"><div class="level-chip"><small>FLOOR</small><strong id="floorNum">01</strong></div><div class="wave-info"><strong id="roomName">YELLOW HALLS</strong><span id="waveText">WAVE 1 / 12</span></div></div>
+          <div class="hud-right"><div class="stat"><span>✦</span><b id="scrap">0</b><small>SCRAP</small></div><div class="stat"><span>◉</span><b id="kills">0</b><small>BONKS</small></div><button id="pauseBtn" class="pause-btn" aria-label="Pause">Ⅱ</button></div>
+          <div class="health-row"><span class="health-label">HULL</span><div class="bar"><i id="healthBar"></i></div><b id="healthText">100 / 100</b></div>
+          <div class="xp-row"><span>FLIGHT XP</span><div class="bar xp-bar"><i id="xpBar"></i></div><b id="levelText">LV 1</b></div>
+        </div>
+        <div id="overlay" class="overlay">
+          <div id="introModal" class="modal intro-modal">
+            <div class="eyebrow"><span class="sparkle">✦</span> LOST &amp; LOW ON FUEL <span class="sparkle">✦</span></div>
+            <h1>PLANE<br><em>TAME</em></h1>
+            <p class="intro-copy">A tiny plane. A <b>very</b> big maze.<br>Bonk your way through the Backrooms!</p>
+            <div class="plane-sticker">✈<span>✦</span></div>
+            <button id="startBtn" class="primary-btn">START YOUR ENGINE <span>→</span></button>
+            <div class="control-hint"><span>⌨</span> WASD / ARROWS <i>·</i> <span>◉</span> AUTO-FIRE <i>·</i> TOUCH TO MOVE</div>
+          </div>
+          <div id="upgradeModal" class="modal upgrade-modal hidden">
+            <div class="eyebrow">WAVE CLEARED · PICK A PERK</div><h2>QUICK<br><em>TUNE-UP</em></h2><p class="upgrade-sub">Choose one. Make it count.</p>
+            <div id="upgradeChoices" class="upgrade-choices"></div>
+          </div>
+          <div id="pauseModal" class="modal pause-modal hidden"><div class="eyebrow">COCKPIT BREAK</div><h2>PAUSED</h2><button id="resumeBtn" class="primary-btn">BACK TO IT <span>→</span></button></div>
+          <div id="endModal" class="modal end-modal hidden"><div class="eyebrow" id="endEyebrow">FLIGHT COMPLETE</div><h2 id="endTitle">YOU MADE IT!</h2><p id="endCopy">The exit was real. Probably.</p><div class="end-stats" id="endStats"></div><button id="restartBtn" class="primary-btn">FLY AGAIN <span>↻</span></button></div>
+        </div>
+      </div>
+      <aside class="side-panel">
+        <div class="panel-kicker">YOUR FLIGHT LOG <span>✦</span></div>
+        <div class="run-card"><div class="card-top"><span>RUN STATUS</span><span class="live-dot" id="liveDot"></span></div><div class="run-state" id="runState">READY FOR TAKEOFF</div><div class="progress-line"><i id="progressBar"></i></div><div class="progress-label"><span id="progressLabel">0 OF 12 FLOORS</span><span>✈</span></div></div>
+        <div class="side-section"><div class="section-title">PLANE SPECS <span>↗</span></div><div class="spec"><span>✦ Firepower</span><b id="damageStat">1.0</b></div><div class="spec"><span>➤ Cruise speed</span><b id="speedStat">1.0</b></div><div class="spec"><span>♡ Hull armor</span><b id="armorStat">0</b></div><div class="spec"><span>⌁ Wingmen</span><b id="wingStat">0</b></div></div>
+        <div class="side-section level-section"><div class="section-title">THE DESCENT <span>12 FLOORS</span></div><div id="levelList" class="level-list"></div></div>
+        <div class="tip-card"><span class="tip-icon">☻</span><div><b id="tipTitle">PILOT TIP</b><p id="tipText">Keep moving. The yellow halls are full of uninvited guests.</p></div></div>
+        <div class="panel-footer"><span>NO RUNWAY. NO PROBLEM.</span><span>✦</span></div>
+      </aside>
+    </section>
+    <footer class="footer"><span>✦ SOMEWHERE BETWEEN HERE &amp; THERE</span><span>MADE FOR BRAVE LITTLE PLANES</span><span>VER. 1.0 <b>●</b></span></footer>
+  </main>
+  <div id="touchControls" class="touch-controls"><div class="dpad"><button data-dir="up">▲</button><button data-dir="left">◀</button><button data-dir="down">▼</button><button data-dir="right">▶</button></div><div class="touch-note">HOLD TO STEER</div></div>
+  <script src="game.js"></script>
+</body>
+</html>
